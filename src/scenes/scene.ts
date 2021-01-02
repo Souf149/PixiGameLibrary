@@ -1,0 +1,17 @@
+import {Application, Container, Graphics, Text} from 'pixi.js'; 
+import { State } from '~utils';
+
+
+
+export abstract class Scene {
+    app: Application;
+    container: Container;
+    newState: State = -1;
+    constructor(_app: PIXI.Application) {
+        this.app = _app;
+        this.container = new Container();
+        this.app.stage.addChild(this.container);
+    }
+    abstract Update(delta: number): void;
+    abstract KeyPressed(key: string): void;
+}
