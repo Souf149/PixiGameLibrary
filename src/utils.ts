@@ -1,4 +1,5 @@
 import * as PIXI from 'pixi.js';
+import * as path from 'path';
 
 // TODO: Remove constant values
 export const GRID_SIZE = 42;
@@ -12,39 +13,27 @@ const API_KEY = '5fd74a4cff9d670638140565';
 export const enum State {
     NONE = -1,
     HOME,
-    GAME,
-    LEADERBOARD
+    LEADERBOARD,
+    SNAKE,
+    CHESS,
 }
-
 export const images = [
-    "data/bg.png", 
-    "data/square.png",
-    "data/food.png",
-    "data/scoreboard.png",
-    "data/arcade_bg.png",
-    "data/arrow.png",
-    "data/leaderboard_bg.png",
-    "data/popup_bg.png",
-    "data/circle.png",
-    "data/white_square.jpg"
+    "assets/chess_pieces.png",
+    "assets/circle.png",
+    "assets/arcade_bg.png",
+    "assets/arrow.png",
+    "assets/bg.png",
+    "assets/food.png",
+    "assets/leaderboard_bg.png",
+    "assets/popup_bg.png",
+    "assets/scoreboard.png",
+    "assets/square.png",
+    "assets/white_square.png",
 ]
 
-export const sprites: Record<string, string> = {
-    "background": images[0],
-    "snake_segment": images[1],
-    "food": images[2],
-    "scoreboard": images[3],
-    "arcade_bg": images[4],
-    "arrow": images[5],
-    "leaderboard_bg": images[6],
-    "popup_bg": images[7],
-    "circle": images[8],
-    "white_square": images[9]
-};
-
 export function getSprite(app: PIXI.Application, name: string){
-    const path = sprites[name]
-    return new PIXI.Sprite(app.loader.resources[path].texture)
+    const _path = "assets/" + name + ".png";
+    return new PIXI.Sprite(app.loader.resources[_path].texture);
 }
 
 // Random Adapter

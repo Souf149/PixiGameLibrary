@@ -1,12 +1,12 @@
 import {Application, Container, Text} from 'pixi.js'; 
 import { Scene } from "~scenes/scene";
 import * as util from '~utils';
-import { State, cols, rows, topMargin, SpriteBuilder, AddScore, RandomInt } from '~utils';
+import { State, cols, rows, topMargin, SpriteBuilder, AddScore, RandomInt, GRID_SIZE } from '~utils';
 import { Food } from './Food';
 import { Popup } from './popup';
 import { Snake } from './Snake';
 
-export class Game extends Scene {
+export class Game_snake extends Scene {
     score: number = 0;
     popup: Container = new Container();
     scoreText: Text;
@@ -16,10 +16,10 @@ export class Game extends Scene {
 
     public constructor(_app: Application) {
         super(_app);
-
+        console.log("Hallo")
         // The background
-        let background = new SpriteBuilder(this.app, "background")
-            .SetSize(this.app.renderer.width, this.app.renderer.height)
+        let background = new SpriteBuilder(this.app, "bg")
+            .SetSize(cols * GRID_SIZE, rows * GRID_SIZE + topMargin)
             .SetPosition(0, 0)
             .Build();
         this.container.addChild(background);
@@ -40,7 +40,7 @@ export class Game extends Scene {
         // Making the Snake
         this.snake = new Snake(
             [[3,2], [4,2], [5,2], [6,2]], 
-            () => util.getSprite(this.app, "snake_segment"), 
+            () => util.getSprite(this.app, "circle"), 
             this.container
         );
 

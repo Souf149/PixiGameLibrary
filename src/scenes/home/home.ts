@@ -27,7 +27,7 @@ export class Home extends Scene {
         // Adding the buttons
         this.addButton("Play game");
         this.addButton("See leaderboard");
-        this.addButton("TEST BUTTON");
+        this.addButton("Play Chess");
 
         // Arrow
         this.arrow = new SpriteBuilder(this.app, "arrow")
@@ -59,7 +59,7 @@ export class Home extends Scene {
 
         switch(this.selectedButtonIndex){
             case 0:
-                this.newState = State.GAME;
+                this.newState = State.SNAKE;
             break;
             case 1:
                 this.newState = State.LEADERBOARD;

@@ -12,6 +12,10 @@ export abstract class Scene {
         this.container = new Container();
         this.app.stage.addChild(this.container);
     }
-    abstract Update(delta: number): void;
-    abstract KeyPressed(key: string): void;
+    Update(delta: number){
+
+    }
+    KeyPressed(key: string){
+
+    }
 }
