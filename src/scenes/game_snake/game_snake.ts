@@ -16,7 +16,6 @@ export class Game_snake extends Scene {
 
     public constructor(_app: Application) {
         super(_app);
-        console.log("Hallo")
         // The background
         let background = new SpriteBuilder(this.app, "bg")
             .SetSize(cols * GRID_SIZE, rows * GRID_SIZE + topMargin)
@@ -104,10 +103,9 @@ export class Game_snake extends Scene {
         while(available_squares_copy.length > 0){
             let position = available_squares_copy.splice(RandomInt(0, available_squares_copy.length), 1)[0];
             if(!this.snake.CheckCollision(position))
-                {console.log(position); return position;}
+                return position;
         }
         this.snake.alive = false;
-        console.log("Top score reached!!!!!!!")
     }
 
     UploadNewScore(){
@@ -121,7 +119,6 @@ export class Game_snake extends Scene {
         AddScore(newName, this.score)
         .then((response)=>{
             this.newState = State.LEADERBOARD;
-            console.log(response);
         })
         .catch(() => {
             console.log("something went wrong...");
