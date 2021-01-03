@@ -45,6 +45,8 @@ export class Game_chess extends Scene {
         
         this.pieces.push(new Bishop(this, false, [7, 3]));
         this.pieces.push(new Bishop(this, true, [1, 2]));
+        
+        this.pieces.push(new Knight(this, true, [2, 2]));
 
 
         let sprite = new SpriteBuilder(this.app, "scoreboard")
