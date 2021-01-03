@@ -32,10 +32,15 @@ export class Game_chess extends Scene {
     }
 
     CreateBoard(){
-        let spritename = "brown_square";
+        let spritename: string;
         for (let i = 0; i < this.cols; i++) {
+            if (i % 2 == 0)
+                spritename = "white_square"
+            else
+                spritename = "brown_square"
+
+            
             for (let j = 0; j < this.rows; j++) {
-                console.log(spritename)
                 spritename = (spritename == "brown_square") ? "white_square" : "brown_square"
                 let sprite = new SpriteBuilder(this.app, spritename)
                     .SetSize(this.GRID_SIZE, this.GRID_SIZE)
