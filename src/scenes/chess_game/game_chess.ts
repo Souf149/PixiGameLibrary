@@ -1,4 +1,4 @@
-import {Application} from 'pixi.js'; 
+import {Application, Sprite} from 'pixi.js'; 
 import { Scene } from "~scenes/scene";
 import { SpriteBuilder } from '~utils';
 import { Chess_sprites_factory } from './chess_sprites';
@@ -19,6 +19,8 @@ export class Game_chess extends Scene {
     rows = 8;
     GRID_SIZE: number;
 
+    pointers: Sprite[] = [];
+
     
 
     selected_piece: Piece | undefined = undefined;
@@ -35,6 +37,14 @@ export class Game_chess extends Scene {
         this.pieces.push(new Queen(this, false, [4, 2]));
         this.pieces.push(new Queen(this, true, [4, 5]));
         this.pieces.push(new Queen(this, false, [3, 1]));
+
+        
+        this.pieces.push(new Tower(this, false, [5, 3]));
+        this.pieces.push(new Tower(this, true, [4, 6]));
+
+        
+        this.pieces.push(new Bishop(this, false, [7, 3]));
+        this.pieces.push(new Bishop(this, true, [1, 2]));
 
 
         let sprite = new SpriteBuilder(this.app, "scoreboard")
@@ -97,7 +107,7 @@ export class Game_chess extends Scene {
         // this.pieces.push(new Pawn(this, false, [6, 1]));
         // this.pieces.push(new Pawn(this, false, [7, 1]));
 
-        // //// BLACK minors
+        // //// WHITE minors
         // this.pieces.push(new Tower(this, true, [0, 7]));
         // this.pieces.push(new Knight(this, true, [1, 7]));
         // this.pieces.push(new Bishop(this, true, [2, 7]));
@@ -106,7 +116,7 @@ export class Game_chess extends Scene {
         // this.pieces.push(new Bishop(this, true, [5, 7]));
         // this.pieces.push(new Knight(this, true, [6, 7]));
         // this.pieces.push(new Tower(this, true, [7, 7]));
-        // // BLACK pawns
+        // // WHITE pawns
         // this.pieces.push(new Pawn(this, true, [0, 6]));
         // this.pieces.push(new Pawn(this, true, [1, 6]));
         // this.pieces.push(new Pawn(this, true, [2, 6]));
@@ -115,6 +125,26 @@ export class Game_chess extends Scene {
         // this.pieces.push(new Pawn(this, true, [5, 6]));
         // this.pieces.push(new Pawn(this, true, [6, 6]));
         // this.pieces.push(new Pawn(this, true, [7, 6]));
+    }
+
+    ShowHighlights(positions: any){
+        this.RemoveHightlights();
+
+        for(let p of positions){
+            let sprite = new SpriteBuilder(this.app, "circle")
+                .SetSize(this.GRID_SIZE/3, this.GRID_SIZE/3)
+                .SetAnchor(0.5, 0.5)
+                .SetPosition((p[0] + 0.5) * this.GRID_SIZE, (p[1] + 0.5) * this.GRID_SIZE)
+                .Build();
+            this.pointers.push(sprite);
+            this.container.addChild(sprite);
+        }
+    }
+
+    RemoveHightlights(){
+        for(let pointer of this.pointers){
+            this.container.removeChild(pointer);
+        }
     }
 
 

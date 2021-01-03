@@ -15,15 +15,12 @@ export default class Queen extends Piece{
         _game.container.addChild(this.sprite);
 
         this.sprite.interactive = true;
-
         this.sprite.on('mousedown', ()=> this.onClick());
         
     }
 
     onClick(){
         this.game.selected_piece = this;
-        console.log(this.position);
-        console.log("I have been clicked");
         this.CalculateMoves();
     }
 
@@ -174,6 +171,8 @@ export default class Queen extends Piece{
                 current_looking_tile[1]--;
             }
         }
+
+        this.game.ShowHighlights(available_moves);
 
         console.log(available_moves);
     }
