@@ -31,80 +31,79 @@ export default class Queen extends Piece{
         // Check all available moves
         let available_moves = []
 
-        // // // North
-        // // // If this piece is not at the top, look north 
+        // North
+        // If this piece is not at the top, look north 
         let current_looking_tile = [this.position[0], this.position[1] - 1];
-        // if (this.position[1] > 0){ 
-        //     while (current_looking_tile[1] >= 0) {
-        //         let piece = this.game.CheckPosition(current_looking_tile);
-        //         if(piece){
-        //             if(piece.isWhite != this.isWhite){
-        //                 available_moves.push([...current_looking_tile])
-        //             }
-        //             break;
-        //         }else{
-        //             available_moves.push([...current_looking_tile]);
-        //         }
-        //         current_looking_tile[1]--;
-        //     }
-        // }
+        if (this.position[1] > 0){ 
+            while (current_looking_tile[1] >= 0) {
+                let piece = this.game.CheckPosition(current_looking_tile);
+                if(piece){
+                    if(piece.isWhite != this.isWhite){
+                        available_moves.push([...current_looking_tile])
+                    }
+                    break;
+                }else{
+                    available_moves.push([...current_looking_tile]);
+                }
+                current_looking_tile[1]--;
+            }
+        }
 
-        // // East
-        // // If this piece is not at the right, look east 
-        // current_looking_tile = [this.position[0] + 1, this.position[1]];
-        // if (this.position[0] < this.game.cols - 1){ 
-        //     while (current_looking_tile[0] < this.game.cols) {
-        //         let piece = this.game.CheckPosition(current_looking_tile);
-        //         if(piece){
-        //             if(piece.isWhite != this.isWhite){
-        //                 available_moves.push([...current_looking_tile])
-        //             }
-        //             break;
-        //         }else{
-        //             available_moves.push([...current_looking_tile]);
-        //         }
-        //         current_looking_tile[0]++;
-        //     }
-        // }
+        // East
+        // If this piece is not at the right, look east 
+        current_looking_tile = [this.position[0] + 1, this.position[1]];
+        if (this.position[0] < this.game.cols - 1){ 
+            while (current_looking_tile[0] < this.game.cols) {
+                let piece = this.game.CheckPosition(current_looking_tile);
+                if(piece){
+                    if(piece.isWhite != this.isWhite){
+                        available_moves.push([...current_looking_tile])
+                    }
+                    break;
+                }else{
+                    available_moves.push([...current_looking_tile]);
+                }
+                current_looking_tile[0]++;
+            }
+        }
 
-        // // South
-        // // If this piece is not at the bottom, look south 
-        // current_looking_tile = [this.position[0], this.position[1] + 1];
-        // if (this.position[1] < this.game.rows - 1){ 
-        //     while (current_looking_tile[1] < this.game.rows) {
-        //         let piece = this.game.CheckPosition(current_looking_tile);
-        //         if(piece){
-        //             if(piece.isWhite != this.isWhite){
-        //                 available_moves.push([...current_looking_tile])
-        //             }
-        //             break;
-        //         }else{
-        //             available_moves.push([...current_looking_tile]);
-        //         }
-        //         current_looking_tile[1]++;
-        //     }
-        // }
+        // South
+        // If this piece is not at the bottom, look south 
+        current_looking_tile = [this.position[0], this.position[1] + 1];
+        if (this.position[1] < this.game.rows - 1){ 
+            while (current_looking_tile[1] < this.game.rows) {
+                let piece = this.game.CheckPosition(current_looking_tile);
+                if(piece){
+                    if(piece.isWhite != this.isWhite){
+                        available_moves.push([...current_looking_tile])
+                    }
+                    break;
+                }else{
+                    available_moves.push([...current_looking_tile]);
+                }
+                current_looking_tile[1]++;
+            }
+        }
 
-        // // West
-        // // If this piece is not at the left, look west 
-        // current_looking_tile = [this.position[0] - 1, this.position[1]];
-        // if (this.position[0] > 0){ 
-        //     while (current_looking_tile[0] >= 0) {
-        //         let piece = this.game.CheckPosition(current_looking_tile);
-        //         if(piece){
-        //             if(piece.isWhite != this.isWhite){
-        //                 available_moves.push([...current_looking_tile])
-        //             }
-        //             break;
-        //         }else{
-        //             available_moves.push([...current_looking_tile]);
-        //         }
-        //         current_looking_tile[0]--;
-        //     }
-        // }
+        // West
+        // If this piece is not at the left, look west 
+        current_looking_tile = [this.position[0] - 1, this.position[1]];
+        if (this.position[0] > 0){ 
+            while (current_looking_tile[0] >= 0) {
+                let piece = this.game.CheckPosition(current_looking_tile);
+                if(piece){
+                    if(piece.isWhite != this.isWhite){
+                        available_moves.push([...current_looking_tile])
+                    }
+                    break;
+                }else{
+                    available_moves.push([...current_looking_tile]);
+                }
+                current_looking_tile[0]--;
+            }
+        }
 
         // North East
-        // If this piece is not at the left and on top, look North east
         current_looking_tile = [this.position[0] + 1, this.position[1] - 1];
         if (this.position[0] < this.game.cols - 1 && this.position[1] > 0 ){ 
             while (current_looking_tile[0] < this.game.cols && current_looking_tile[1] >= 0) {
@@ -118,6 +117,60 @@ export default class Queen extends Piece{
                     available_moves.push([...current_looking_tile]);
                 }
                 current_looking_tile[0]++;
+                current_looking_tile[1]--;
+            }
+        }
+
+        // East South
+        current_looking_tile = [this.position[0] + 1, this.position[1] + 1];
+        if (this.position[0] < this.game.cols - 1 && this.position[1] < this.game.rows - 1 ){ 
+            while (current_looking_tile[0] < this.game.cols && current_looking_tile[1] < this.game.rows) {
+                let piece = this.game.CheckPosition(current_looking_tile);
+                if(piece){
+                    if(piece.isWhite != this.isWhite){
+                        available_moves.push([...current_looking_tile])
+                    }
+                    break;
+                }else{
+                    available_moves.push([...current_looking_tile]);
+                }
+                current_looking_tile[0]++;
+                current_looking_tile[1]++;
+            }
+        }
+
+        // South West
+        current_looking_tile = [this.position[0] - 1, this.position[1] + 1];
+        if (this.position[0] > 0 && this.position[1] < this.game.rows - 1 ){ 
+            while (current_looking_tile[0] >= 0 && current_looking_tile[1] < this.game.rows) {
+                let piece = this.game.CheckPosition(current_looking_tile);
+                if(piece){
+                    if(piece.isWhite != this.isWhite){
+                        available_moves.push([...current_looking_tile])
+                    }
+                    break;
+                }else{
+                    available_moves.push([...current_looking_tile]);
+                }
+                current_looking_tile[0]--;
+                current_looking_tile[1]++;
+            }
+        }
+        
+        // West North
+        current_looking_tile = [this.position[0] - 1, this.position[1] - 1];
+        if (this.position[0] > 0 && this.position[1] > 0 ){ 
+            while (current_looking_tile[0] >= 0 && current_looking_tile[1] >= 0) {
+                let piece = this.game.CheckPosition(current_looking_tile);
+                if(piece){
+                    if(piece.isWhite != this.isWhite){
+                        available_moves.push([...current_looking_tile])
+                    }
+                    break;
+                }else{
+                    available_moves.push([...current_looking_tile]);
+                }
+                current_looking_tile[0]--;
                 current_looking_tile[1]--;
             }
         }
