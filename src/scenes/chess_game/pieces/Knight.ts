@@ -4,7 +4,6 @@ import { Piece } from "./chess_piece";
 
 export default class Knight extends Piece{
 
-    sprite: Sprite;
     
     public constructor(_game:Game_chess, _isWhite:boolean, _position:number[]){
         super(_game.container, _position, _isWhite);

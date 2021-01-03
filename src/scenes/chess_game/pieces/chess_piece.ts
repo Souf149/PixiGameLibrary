@@ -1,21 +1,38 @@
-import { Container, Sprite } from 'pixi.js';
+import { Sprite } from 'pixi.js';
+import { Game_chess } from '../game_chess';
 
 
 
 export abstract class Piece {
-    container: Container;
+    game: Game_chess;
     position: number[];
     isWhite: boolean;
+    sprite?: Sprite;
+    type: PieceType
     
-    constructor(_container: Container, _position: number[], _isWhite: boolean) {
-        this.container = _container;
+    constructor(_game: Game_chess, _position: number[], _isWhite: boolean) {
+        this.game = _game;
         this.position = _position;
         this.isWhite = _isWhite;
+        this.type = PieceType.None;
     }
-    Update(delta: number){
+    
+    OnClick(){
+
+    }
+
+    CalculateMoves(){
         
     }
-    KeyPressed(key: string){
-    
-    }
+}
+
+export enum PieceType
+{
+    None,
+    King,
+    Queen,
+    Tower,
+    Bishop,
+    Knight,
+    Pawn,
 }
