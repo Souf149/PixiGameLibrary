@@ -25,9 +25,9 @@ export class Home extends Scene {
         this.container.addChild(background);
 
         // Adding the buttons
-        this.addButton("Play game");
-        this.addButton("See leaderboard");
-        this.addButton("Play Chess");
+        this.addButton("Play game",        () => this.newState = State.SNAKE);
+        this.addButton("See leaderboard",  () => this.newState = State.LEADERBOARD);
+        this.addButton("Play Chess",       () => this.newState = State.CHESS);
 
         // Arrow
         this.arrow = new SpriteBuilder(this.app, "arrow")
@@ -87,7 +87,7 @@ export class Home extends Scene {
 
     }
 
-    addButton(txt:string){
+    addButton(txt:string, func: Function){
         // The button rectangle
         let w = this.BUTTON_SIZE[0];
         let h = this.BUTTON_SIZE[1]
@@ -99,6 +99,8 @@ export class Home extends Scene {
             .SetPosition(x, y)
             .SetSize(w, h)
             .Build();
+        button_background.interactive = true;
+        button_background.on('mousedown', func);
 
         // The text on the rectangle
         let button_txt = new Text(txt, {align : 'center', wordWrap: true});
