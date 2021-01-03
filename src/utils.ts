@@ -1,5 +1,4 @@
 import * as PIXI from 'pixi.js';
-import * as path from 'path';
 
 // TODO: Remove constant values
 export const GRID_SIZE = 42;

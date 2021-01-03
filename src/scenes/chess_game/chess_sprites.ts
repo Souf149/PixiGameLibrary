@@ -5,14 +5,11 @@ import { Application, Rectangle, Sprite } from "pixi.js";
 
 export class Chess_sprites_factory{
     app: Application;
-
-
     public constructor(_app: Application){
         this.app = _app;
     }
-    
     getPiece(x: number, y: number){
-        let texture = this.app.loader.resources["assets/chess_pieces.png"].texture;
+        let texture = this.app.loader.resources["assets/chess_pieces.png"].texture.clone();
         // Get the black or white king depending on the parameter
         texture.frame = new Rectangle(x * 161, y * 155, 161, 155);
     
@@ -56,5 +53,4 @@ export class Chess_sprites_factory{
         else
             return this.getPiece(5, 1); 
     }
-    
 }

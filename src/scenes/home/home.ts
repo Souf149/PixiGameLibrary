@@ -1,6 +1,6 @@
-import {Application, Container, Graphics, Sprite, Text} from 'pixi.js'; 
+import {Application, Sprite, Text} from 'pixi.js'; 
 import { Scene } from '~scenes/scene';
-import {getSprite, SpriteBuilder, State} from '~utils';
+import {SpriteBuilder, State} from '~utils';
 
 export class Home extends Scene {
     BUTTON_SIZE: number[];

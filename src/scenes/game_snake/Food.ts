@@ -1,5 +1,5 @@
 import {Container, Sprite} from 'pixi.js';
-import { State, cols, topMargin, GRID_SIZE, NumberToCell } from '~utils';
+import { topMargin, GRID_SIZE, NumberToCell } from '~utils';
 import { Snake } from './Snake';
 
 export class Food {

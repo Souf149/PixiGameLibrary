@@ -18,4 +18,7 @@ export abstract class Scene {
     KeyPressed(key: string){
 
     }
+    mouseClicked(){
+        
+    }
 }
