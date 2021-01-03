@@ -1,5 +1,6 @@
 import {Application} from 'pixi.js'; 
 import { Scene } from "~scenes/scene";
+import { SpriteBuilder } from '~utils';
 import { Chess_sprites_factory } from './chess_sprites';
 import Bishop from './pieces/Bishop';
 import { Piece } from './pieces/chess_piece';
@@ -23,10 +24,26 @@ export class Game_chess extends Scene {
         this.sprite_factory = new Chess_sprites_factory(this.app);
         this.GRID_SIZE = _app.view.height / this.cols;
 
-
+        this.CreateBoard();
         this.CreatePieces();
 
 
+
+    }
+
+    CreateBoard(){
+        let spritename = "brown_square";
+        for (let i = 0; i < this.cols; i++) {
+            for (let j = 0; j < this.rows; j++) {
+                console.log(spritename)
+                spritename = (spritename == "brown_square") ? "white_square" : "brown_square"
+                let sprite = new SpriteBuilder(this.app, spritename)
+                    .SetSize(this.GRID_SIZE, this.GRID_SIZE)
+                    .SetPosition(i * this.GRID_SIZE, j * this.GRID_SIZE)
+                    .Build();
+                this.container.addChild(sprite);
+            }
+        }
 
     }
 

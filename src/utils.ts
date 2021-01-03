@@ -28,11 +28,12 @@ export const images = [
     "assets/scoreboard.png",
     "assets/square.png",
     "assets/white_square.png",
+    "assets/brown_square.png",
 ]
 
 export function getSprite(app: PIXI.Application, name: string){
     const _path = "assets/" + name + ".png";
-    return new PIXI.Sprite(app.loader.resources[_path].texture);
+    return new PIXI.Sprite(app.loader.resources[_path].texture.clone());
 }
 
 // Random Adapter
