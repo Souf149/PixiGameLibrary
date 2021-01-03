@@ -8,6 +8,7 @@ import { Scene } from '~scenes/scene';
 import { Home } from '~scenes/home/home';
 import { Game_snake } from '~scenes/game_snake/game_snake';
 import { Leaderboard } from '~scenes/leaderboard/leaderboard';
+import { Game_chess } from '~scenes/chess_game/game_chess';
 
 // Create the application instance and add it to the page
 const app = new Application({
@@ -53,7 +54,7 @@ function switchState(arg: State){
             scene = new Game_snake(app);
         break;
         case State.CHESS:
-            // TODO: make chess scene
+            scene = new Game_chess(app);
         break;
         case State.LEADERBOARD:
             scene = new Leaderboard(app);

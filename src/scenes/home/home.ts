@@ -65,7 +65,7 @@ export class Home extends Scene {
                 this.newState = State.LEADERBOARD;
             break;
             case 2:
-                console.log("I dont do anything!");
+                this.newState = State.CHESS;
             break;
         }
 
