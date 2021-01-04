@@ -19,11 +19,6 @@ export default class Queen extends Piece{
         
     }
 
-    onClick(){
-        this.game.selected_piece = this;
-        this.CalculateMoves();
-    }
-
     CalculateMoves(){
         // Check all available moves
         let available_moves = []
@@ -173,7 +168,6 @@ export default class Queen extends Piece{
         }
 
         this.game.ShowHighlights(available_moves);
-
         console.log(available_moves);
     }
 

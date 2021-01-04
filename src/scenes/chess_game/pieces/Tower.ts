@@ -20,10 +20,6 @@ export default class Tower extends Piece{
         
     }
 
-    onClick(){
-        this.game.selected_piece = this;
-        this.CalculateMoves();
-    }
 
     CalculateMoves(){
         // Check all available moves

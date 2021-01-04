@@ -16,9 +16,9 @@ export abstract class Piece {
         this.isWhite = _isWhite;
         this.type = PieceType.None;
     }
-    
-    OnClick(){
 
+    onClick(){
+        this.CalculateMoves();
     }
 
     CalculateMoves(){

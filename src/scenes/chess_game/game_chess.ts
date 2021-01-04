@@ -33,21 +33,20 @@ export class Game_chess extends Scene {
         this.CreateBoard();
         this.CreatePieces();
 
-        
-        this.pieces.push(new Queen(this, false, [4, 2]));
-        this.pieces.push(new Queen(this, true, [4, 5]));
-        this.pieces.push(new Queen(this, false, [3, 1]));
-
-        
-        this.pieces.push(new Tower(this, false, [5, 3]));
-        this.pieces.push(new Tower(this, true, [4, 6]));
-
-        
-        this.pieces.push(new Bishop(this, false, [7, 3]));
-        this.pieces.push(new Bishop(this, true, [1, 2]));
-        
-        this.pieces.push(new Knight(this, true, [2, 2]));
-
+        // // Testing starter position
+        // this.pieces.push(new Queen(this, false, [4, 2]));
+        // this.pieces.push(new Queen(this, true, [4, 5]));
+        // this.pieces.push(new Queen(this, false, [3, 2]));
+        // this.pieces.push(new Tower(this, false, [5, 3]));
+        // this.pieces.push(new Tower(this, true, [4, 6]));
+        // this.pieces.push(new Bishop(this, true, [7, 3]));
+        // this.pieces.push(new Bishop(this, true, [1, 2]));
+        // this.pieces.push(new Knight(this, true, [6, 1]));
+        // this.pieces.push(new Knight(this, false, [3, 4]));
+        // this.pieces.push(new Pawn(this, false, [6, 2]));
+        // this.pieces.push(new Pawn(this, true, [2, 3]));
+        // this.pieces.push(new King(this, false, [5, 6]));
+        // this.pieces.push(new King(this, true, [0, 2]));
 
         let sprite = new SpriteBuilder(this.app, "scoreboard")
             .SetSize(this.app.view.width - this.cols * this.GRID_SIZE, this.app.view.height)
@@ -89,44 +88,44 @@ export class Game_chess extends Scene {
     }
 
     CreatePieces(){
-        // // Creating the chess pieces
-        // //// BLACK minors
-        // this.pieces.push(new Tower(this, false, [0, 0]));
-        // this.pieces.push(new Knight(this, false, [1, 0]));
-        // this.pieces.push(new Bishop(this, false, [2, 0]));
-        // this.pieces.push(new Queen(this, false, [3, 0]));
-        // this.pieces.push(new King(this, false, [4, 0]));
-        // this.pieces.push(new Bishop(this, false, [5, 0]));
-        // this.pieces.push(new Knight(this, false, [6, 0]));
-        // this.pieces.push(new Tower(this, false, [7, 0]));
-        // // BLACK pawns
-        // this.pieces.push(new Pawn(this, false, [0, 1]));
-        // this.pieces.push(new Pawn(this, false, [1, 1]));
-        // this.pieces.push(new Pawn(this, false, [2, 1]));
-        // this.pieces.push(new Pawn(this, false, [3, 1]));
-        // this.pieces.push(new Pawn(this, false, [4, 1]));
-        // this.pieces.push(new Pawn(this, false, [5, 1]));
-        // this.pieces.push(new Pawn(this, false, [6, 1]));
-        // this.pieces.push(new Pawn(this, false, [7, 1]));
+        // Creating the chess pieces
+        //// BLACK minors
+        this.pieces.push(new Tower(this, false, [0, 0]));
+        this.pieces.push(new Knight(this, false, [1, 0]));
+        this.pieces.push(new Bishop(this, false, [2, 0]));
+        this.pieces.push(new Queen(this, false, [3, 0]));
+        this.pieces.push(new King(this, false, [4, 0]));
+        this.pieces.push(new Bishop(this, false, [5, 0]));
+        this.pieces.push(new Knight(this, false, [6, 0]));
+        this.pieces.push(new Tower(this, false, [7, 0]));
+        // BLACK pawns
+        this.pieces.push(new Pawn(this, false, [0, 1]));
+        this.pieces.push(new Pawn(this, false, [1, 1]));
+        this.pieces.push(new Pawn(this, false, [2, 1]));
+        this.pieces.push(new Pawn(this, false, [3, 1]));
+        this.pieces.push(new Pawn(this, false, [4, 1]));
+        this.pieces.push(new Pawn(this, false, [5, 1]));
+        this.pieces.push(new Pawn(this, false, [6, 1]));
+        this.pieces.push(new Pawn(this, false, [7, 1]));
 
-        // //// WHITE minors
-        // this.pieces.push(new Tower(this, true, [0, 7]));
-        // this.pieces.push(new Knight(this, true, [1, 7]));
-        // this.pieces.push(new Bishop(this, true, [2, 7]));
-        // this.pieces.push(new Queen(this, true, [3, 7]));
-        // this.pieces.push(new King(this, true, [4, 7]));
-        // this.pieces.push(new Bishop(this, true, [5, 7]));
-        // this.pieces.push(new Knight(this, true, [6, 7]));
-        // this.pieces.push(new Tower(this, true, [7, 7]));
-        // // WHITE pawns
-        // this.pieces.push(new Pawn(this, true, [0, 6]));
-        // this.pieces.push(new Pawn(this, true, [1, 6]));
-        // this.pieces.push(new Pawn(this, true, [2, 6]));
-        // this.pieces.push(new Pawn(this, true, [3, 6]));
-        // this.pieces.push(new Pawn(this, true, [4, 6]));
-        // this.pieces.push(new Pawn(this, true, [5, 6]));
-        // this.pieces.push(new Pawn(this, true, [6, 6]));
-        // this.pieces.push(new Pawn(this, true, [7, 6]));
+        //// WHITE minors
+        this.pieces.push(new Tower(this, true, [0, 7]));
+        this.pieces.push(new Knight(this, true, [1, 7]));
+        this.pieces.push(new Bishop(this, true, [2, 7]));
+        this.pieces.push(new Queen(this, true, [3, 7]));
+        this.pieces.push(new King(this, true, [4, 7]));
+        this.pieces.push(new Bishop(this, true, [5, 7]));
+        this.pieces.push(new Knight(this, true, [6, 7]));
+        this.pieces.push(new Tower(this, true, [7, 7]));
+        // WHITE pawns
+        this.pieces.push(new Pawn(this, true, [0, 6]));
+        this.pieces.push(new Pawn(this, true, [1, 6]));
+        this.pieces.push(new Pawn(this, true, [2, 6]));
+        this.pieces.push(new Pawn(this, true, [3, 6]));
+        this.pieces.push(new Pawn(this, true, [4, 6]));
+        this.pieces.push(new Pawn(this, true, [5, 6]));
+        this.pieces.push(new Pawn(this, true, [6, 6]));
+        this.pieces.push(new Pawn(this, true, [7, 6]));
     }
 
     ShowHighlights(positions: any){
@@ -138,6 +137,10 @@ export class Game_chess extends Scene {
                 .SetAnchor(0.5, 0.5)
                 .SetPosition((p[0] + 0.5) * this.GRID_SIZE, (p[1] + 0.5) * this.GRID_SIZE)
                 .Build();
+            
+            if(this.CheckPosition(p))
+                sprite.tint = 0xFF0001;
+            
             this.pointers.push(sprite);
             this.container.addChild(sprite);
         }
@@ -147,6 +150,10 @@ export class Game_chess extends Scene {
         for(let pointer of this.pointers){
             this.container.removeChild(pointer);
         }
+    }
+
+    Update(){
+        
     }
 
 

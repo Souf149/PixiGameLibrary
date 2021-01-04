@@ -20,13 +20,6 @@ export default class Bishop extends Piece{
         
     }
 
-    onClick(){
-        this.game.selected_piece = this;
-        console.log(this.position);
-        console.log("I have been clicked");
-        this.CalculateMoves();
-    }
-
     CalculateMoves(){
         // Check all available moves
         let available_moves = []
