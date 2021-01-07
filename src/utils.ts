@@ -118,7 +118,18 @@ export class SpriteBuilder{
         return this;
     }
 
+    SetAlpha(alpha:number){
+        this.sprite.alpha = alpha;
+        return this;
+    }
+
+    SetOnClick(_func: Function){
+        this.sprite.interactive = true;
+        this.sprite.on('mousedown', _func);
+    }
+
     Build(){
         return this.sprite;
     }
+
 }

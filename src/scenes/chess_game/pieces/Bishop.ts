@@ -1,4 +1,3 @@
-import { Sprite } from "pixi.js";
 import { Game_chess } from "../game_chess";
 import { Piece } from "./chess_piece";
 
@@ -96,8 +95,6 @@ export default class Bishop extends Piece{
             }
         }
 
-        this.game.ShowHighlights(available_moves);
-
-        console.log(available_moves);
+        this.SendAvailableSpots(available_moves);
     }
 }   

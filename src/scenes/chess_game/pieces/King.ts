@@ -1,4 +1,3 @@
-import { Sprite } from "pixi.js";
 import { Game_chess } from "../game_chess";
 import { Piece } from "./chess_piece";
 
@@ -41,8 +40,7 @@ export default class King extends Piece{
             }
         }
         
-        console.log(available_moves);
-        this.game.ShowHighlights(available_moves);
+        this.SendAvailableSpots(available_moves);
 
     }
 }   

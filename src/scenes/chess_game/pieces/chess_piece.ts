@@ -8,31 +8,32 @@ export abstract class Piece {
     position: number[];
     isWhite: boolean;
     sprite?: Sprite;
-    type: PieceType
     
     constructor(_game: Game_chess, _position: number[], _isWhite: boolean) {
         this.game = _game;
         this.position = _position;
         this.isWhite = _isWhite;
-        this.type = PieceType.None;
     }
 
     onClick(){
         this.CalculateMoves();
     }
 
+    SendAvailableSpots(available_moves: number[][]){
+        
+
+        console.log(available_moves);
+        this.game.ShowHighlights(this, available_moves);
+    }
+
+    Move(_position: number[]){
+        if(this.sprite){
+            this.position = _position;
+            this.sprite.position.set(this.game.GRID_SIZE * this.position[0], this.game.GRID_SIZE * this.position[1])
+        }
+    }
+
     CalculateMoves(){
         
     }
-}
-
-export enum PieceType
-{
-    None,
-    King,
-    Queen,
-    Tower,
-    Bishop,
-    Knight,
-    Pawn,
 }

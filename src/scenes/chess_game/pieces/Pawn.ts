@@ -44,10 +44,15 @@ export default class Pawn extends Piece{
         let rpiece = this.game.CheckPosition([this.position[0] + 1, this.position[1] + dir]);
         if(rpiece && rpiece.isWhite != this.isWhite)
             available_moves.push(rpiece.position);
+        
+        this.SendAvailableSpots(available_moves);
+    }
 
-        console.log(available_moves);
-        this.game.ShowHighlights(available_moves);
-
-
+    Move(_position: number[]){
+        if(this.sprite){
+            this.position = _position;
+            this.sprite.position.set(this.game.GRID_SIZE * this.position[0], this.game.GRID_SIZE * this.position[1]);
+            this.movedBefore = true;
+        }
     }
 }   

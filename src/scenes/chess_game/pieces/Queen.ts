@@ -1,12 +1,11 @@
 import { Game_chess } from "../game_chess";
-import { Piece, PieceType } from "./chess_piece";
+import { Piece } from "./chess_piece";
 
 export default class Queen extends Piece{
 
     
     public constructor(_game:Game_chess, _isWhite:boolean, _position:number[]){
         super(_game, _position, _isWhite);
-        this.type = PieceType.Queen;
 
         this.sprite = _game.sprite_factory.getQueen(_isWhite);
         this.sprite.position.set(_game.GRID_SIZE * this.position[0], _game.GRID_SIZE * this.position[1])
@@ -167,8 +166,7 @@ export default class Queen extends Piece{
             }
         }
 
-        this.game.ShowHighlights(available_moves);
-        console.log(available_moves);
+        this.SendAvailableSpots(available_moves);
     }
 
 }   

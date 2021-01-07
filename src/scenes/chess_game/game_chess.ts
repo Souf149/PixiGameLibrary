@@ -3,7 +3,7 @@ import { Scene } from "~scenes/scene";
 import { SpriteBuilder } from '~utils';
 import { Chess_sprites_factory } from './chess_sprites';
 import Bishop from './pieces/Bishop';
-import { Piece, PieceType } from './pieces/chess_piece';
+import { Piece } from './pieces/chess_piece';
 import King from './pieces/King';
 import Knight from './pieces/Knight';
 import Pawn from './pieces/Pawn';
@@ -128,21 +128,51 @@ export class Game_chess extends Scene {
         this.pieces.push(new Pawn(this, true, [7, 6]));
     }
 
-    ShowHighlights(positions: any){
+    ShowHighlights(piece:Piece, positions: number[][]){
         this.RemoveHightlights();
+        this.selected_piece = piece;
 
         for(let p of positions){
             let sprite = new SpriteBuilder(this.app, "circle")
-                .SetSize(this.GRID_SIZE/3, this.GRID_SIZE/3)
+                .SetSize(this.GRID_SIZE, this.GRID_SIZE)
                 .SetAnchor(0.5, 0.5)
                 .SetPosition((p[0] + 0.5) * this.GRID_SIZE, (p[1] + 0.5) * this.GRID_SIZE)
+                .SetAlpha(0.5)
                 .Build();
             
+            
+            sprite.interactive = true;
+            sprite.on('mousedown', ()=> this.MoveSelectedPiece(p) );
+            
+            
+            // If the piece can move onto another pawn, make it red to show an attack
             if(this.CheckPosition(p))
                 sprite.tint = 0xFF0001;
             
             this.pointers.push(sprite);
             this.container.addChild(sprite);
+        }
+    }
+
+    MoveSelectedPiece(position: number[]){
+        if(this.selected_piece){
+            let other = this.CheckPosition(position);
+            if(other){
+                this.RemovePiece(other);
+            }
+
+            this.selected_piece.Move(position);
+            this.selected_piece = undefined;
+            this.RemoveHightlights();
+        }
+    }
+
+    RemovePiece(piece: Piece){
+        if(piece.sprite){
+            let index = this.pieces.indexOf(piece);
+            this.pieces.splice(index, 1);
+            this.container.removeChild(piece.sprite);
+            piece.sprite.destroy();
         }
     }
 
