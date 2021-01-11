@@ -21,9 +21,9 @@ export abstract class Piece {
 
     SendAvailableSpots(available_moves: number[][]){
         
-
-        console.log(available_moves);
-        this.game.ShowHighlights(this, available_moves);
+        if(this.isWhite == this.game.whiteTurn){
+            this.game.ShowHighlights(this, available_moves);
+        }
     }
 
     Move(_position: number[]){

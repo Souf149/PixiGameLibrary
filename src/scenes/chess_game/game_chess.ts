@@ -1,4 +1,4 @@
-import {Application, Sprite} from 'pixi.js'; 
+import {Application, Sprite, Text} from 'pixi.js'; 
 import { Scene } from "~scenes/scene";
 import { SpriteBuilder } from '~utils';
 import { Chess_sprites_factory } from './chess_sprites';
@@ -18,9 +18,10 @@ export class Game_chess extends Scene {
     cols = 8;
     rows = 8;
     GRID_SIZE: number;
-
     pointers: Sprite[] = [];
+    whiteTurn = true;
 
+    turnText: Text;
     
 
     selected_piece: Piece | undefined = undefined;
@@ -48,12 +49,21 @@ export class Game_chess extends Scene {
         // this.pieces.push(new King(this, false, [5, 6]));
         // this.pieces.push(new King(this, true, [0, 2]));
 
+        // The data about the extra space on the right
+        let _sidePosition = [this.cols * this.GRID_SIZE, 0]
+        let _sideSize = [this.app.view.width - this.cols * this.GRID_SIZE, this.app.view.height]
+
+        // left side background
         let sprite = new SpriteBuilder(this.app, "scoreboard")
-            .SetSize(this.app.view.width - this.cols * this.GRID_SIZE, this.app.view.height)
-            .SetPosition(this.cols * this.GRID_SIZE, 0)
+            .SetPosition(_sidePosition[0], _sidePosition[1])
+            .SetSize(_sideSize[0], _sideSize[1])
             .Build();
         this.container.addChild(sprite);
-        
+
+        // Turn text
+        this.turnText = new Text("It is white's turn");
+        this.turnText.position.set(_sidePosition[0], _sidePosition[1] + this.app.view.height/2);
+        this.container.addChild(this.turnText);
 
     }
 
@@ -162,9 +172,19 @@ export class Game_chess extends Scene {
             }
 
             this.selected_piece.Move(position);
-            this.selected_piece = undefined;
-            this.RemoveHightlights();
+            this.EndTurn();
+            
         }
+    }
+
+    EndTurn(){
+        this.selected_piece = undefined;
+        this.whiteTurn = !this.whiteTurn;
+        this.RemoveHightlights();
+
+        // changing the text
+        this.turnText.text = this.whiteTurn ? "It is white's turn" : "It is black's turn"
+        
     }
 
     RemovePiece(piece: Piece){
